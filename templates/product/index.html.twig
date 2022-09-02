@@ -1,0 +1,36 @@
+{% extends 'base.html.twig.html' %}
+
+{% block title %}Nos produits - La Boutique Française{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-3">
+
+            {{ form(form) }}
+        </div>
+        <div class="col-md-9">
+            <h3 class="text-start">Nos Produits</h3>
+            <br>
+            <br>
+            <div class="row">
+                {% for product in products %}
+                    <div class="'col-md-4 text-center">
+                        <div class="product-item ">
+                            <h5 class="name text-uppercase fw-bold">{{ product.name }}</h5>
+
+                            <p class="subtitle fs-5">{{ product.subtitle }}</p>
+
+                            <a href="{{ path('app_fiche_product', {'slug' : product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" width="300px" height="auto"/></a>
+
+                            <p class="price fs-6 fw-bold">{{ (product.price/100)|number_format(2) }}€</p>
+                        </div>
+                        <br>
+                        <br>
+                    </div>
+                {% endfor %}
+            </div>
+            <br>
+        </div>
+    </div>
+
+{% endblock %}

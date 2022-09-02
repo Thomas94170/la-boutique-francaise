@@ -1,13 +1,25 @@
+
+body{
+    position: relative;
+}
+
+
 .navbar-item-custom, .navbar-item-custom a {
 color: white;
 }
 
+
 .footer-custom{
     text-align: center;
-    position: fixed;
-    bottom: 0;
+    position: absolute;
+
     padding-top: 25px;
     width: 100%;
     background-color: #dfeaff;
 
+}
+
+
+.name{
+    text-transform: uppercase;
 }
