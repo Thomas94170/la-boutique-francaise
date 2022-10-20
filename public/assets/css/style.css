@@ -23,3 +23,23 @@ color: white;
 .name{
     text-transform: uppercase;
 }
+
+.form-check{
+    background-color: #dfeaff;
+    padding: 20px 65px;
+    margin-top: 5px;
+}
+
+.col-form-label{
+    font-weight: bold;
+}
+
+.order-summary{
+    background-color: #dfeaff;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+.titre{
+    margin-top: 9px;
+}

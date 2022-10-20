@@ -1,7 +1,97 @@
 {% extends "base.html.twig.html" %}
 
-
+{% block title %}Mon Panier - La Boutique Française {% endblock %}
 
 {% block content %}
 
+    <h1>Mon panier</h1>
+    {% if cart | length > 0 %}
+    <p>Voici l'ensemble des articles que vous avez mis dans votre panier :</p>
+    <hr>
+    <br>
+
+    <table class="table">
+        <thead>
+        <tr>
+
+            <th scope="col">Produit</th>
+            <th scope="col">Quantité</th>
+            <th scope="col">Prix</th>
+            <th scope="col">Total</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% set total = null %}
+        {% for product in cart %}
+
+        <tr>
+            <th scope="row">
+                <img src="/uploads/{{ product.product.illustration }}" alt="{{ product.product.name }}" height="40px" width="40px">
+                {{ product.product.name }}</th>
+            <td>
+                <a href="{{ path('decrease_cart', {'id' : product.product.id}) }}">
+                <img src="{{ asset('assets/images/moins.png') }}" alt='decrease-product' width="20px" height="20px" class="mr-1">
+                </a>
+                x{{ product.quantity }}
+                <a href="{{ path('add_to_cart', {'id' : product.product.id}) }}">
+                <img src="{{ asset('assets/images/plus.png') }}" alt='more-product' width="18px" height="18px" class="ml-1">
+                </a>
+            </td>
+            <td>{{ (product.product.price/100)|number_format(2) }}€</td>
+            <td>{{ (product.product.price * product.quantity /100)|number_format(2) }}€</td>
+            <td>
+                <a href="{{ path('delete_cart', {'id' : product.product.id}) }}">
+                <img src="{{ asset('assets/images/delete.png') }}" alt='delete-product' width="20px" height="20px">
+                </a>
+            </td>
+
+        </tr>
+            {% set total = total + (product.product.price * product.quantity) %}
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <hr>
+        <a href="{{ path('app_product') }}" class="btn btn-info">Continuer les achats</a>
+
+    <div class="text-right mb-5">
+        <p><b>Nombre de produits: </b>{{ cart|length }}</p>
+        <br><br>
+        <p><b>Total du panier: </b>{{ (total /100)|number_format(2) }}€</p>
+        <br><br>
+        <a href="{{ path('app_order') }}" class="btn btn-success">Valider mon panier</a>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    {% else %}
+        <hr>
+        <p><b>Votre panier est vide</b></p>
+        <br><br><br>
+        <br>
+        <hr>
+        <a href="{{ path('app_product') }}" class="btn btn-info">Commencer les achats</a>
+        <br>
+        <br><br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    {% endif %}
 {% endblock %}

@@ -51,11 +51,14 @@
             </ul>
             <div class="navbar-item-custom">
             {% if app.user %}
-            <a href="{{path('app_account')}}">Mon Compte <small>({{app.user.firstname}})</small> </a> | <a href="{{path('app_logout')}}">Deconnexion</a>
+                <a href="{{path('app_account')}}">Mon Compte <small>({{app.user.firstname}})</small> </a> | <a href="{{path('app_logout')}}">Deconnexion</a>
             {% else %}
-            <a href="{{path('app_login')}}">Connexion</a> | <a href="{{path('app_register')}}">Inscription</a>
+                <a href="{{path('app_login')}}">Connexion</a> | <a href="{{path('app_register')}}">Inscription</a>
             {% endif %}
             </div>
+                <a href="{{path('cart')}}">
+                    <img src="{{asset('assets/images/panier.png')}}" alt="panier" height="25px" width="25px" class=" ml-4 mr-2">
+                </a>
         </div>
     </nav>
 </header>
